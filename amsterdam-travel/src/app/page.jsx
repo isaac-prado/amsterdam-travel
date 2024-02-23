@@ -59,6 +59,23 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        <section id="sobre" className="bg-vermelho w-431 h-96 ">
+          <div className="flex flex-col place-items-center">
+            <div className="text-branco font-inter text-2xl font-regular mt-24">
+              SOBRE
+            </div>
+
+            <div className="text-branco font-inter text-base text-center mt-12 ">
+              Bem-vindo à Amsterdam Travel, sua porta de entrada para uma
+              experiência única em viagens pela deslumbrante cidade de
+              Amsterdam. Fundada por duas entusiastas brasileiras com a paixão
+              por desvendar os encantos dessa cidade fascinante e facilitar a
+              jornada dos brasileiros com roteiros turísticos e exclusivos de
+              acordo com as necessidades e desejos do cliente.
+            </div>
+          </div>
+        </section>
       </main>
     </body>
   );
