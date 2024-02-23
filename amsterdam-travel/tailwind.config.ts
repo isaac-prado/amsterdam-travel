@@ -17,6 +17,7 @@ const config: Config = {
       },
       fontFamily: {
         lexend: ["Lexend", "sans-serif"],
+        inter: ["Inter", "sans-serif"],
       },
     },
   },
