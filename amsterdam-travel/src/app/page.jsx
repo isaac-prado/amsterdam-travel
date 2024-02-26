@@ -1,16 +1,68 @@
 "use client";
 import logo from "./img/byronbranco.png";
-import wpp from "./img/whats.png"
-import email from "./img/email.png"
-import React from "react";
+import wpp from "./img/whats.png";
+import email from "./img/email.png";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import homeImage from "./img/home.jpg";
+import heineken1 from "./img/heineken1.jpg";
+import heineken2 from "./img/heineken2.png";
+import heineken3 from "./img/heineken3.jpg";
+import annefrank1 from "./img/annefrank1.jpg";
+import annefrank2 from "./img/annefrank2.jpg";
+import annefrank3 from "./img/annefrank3.jpg";
+import vangogh1 from "./img/vangogh1.jpg";
+import vangogh2 from "./img/vangogh2.jpg";
+import vangogh3 from "./img/vangogh3.jpg";
+import loversboat1 from "./img/loversboat1.jpg";
+import loversboat2 from "./img/loversboat2.jpg";
+import loversboat3 from "./img/loversboat3.jpg";
+import rjm1 from "./img/rjm1.jpg";
+import rjm2 from "./img/rjm2.jpg";
+import rjm3 from "./img/rjm3.jpg";
+import sexmuseum1 from "./img/sexmuseum1.jpg";
+import sexmuseum2 from "./img/sexmuseum2.jpg";
+import sexmuseum3 from "./img/sexmuseum3.jpg";
+import { useSpring, animated } from "react-spring";
+
+const heineken = [heineken1, heineken2, heineken3];
+const annefrank = [annefrank1, annefrank2, annefrank3];
+const vangogh = [vangogh1, vangogh2, vangogh3];
+const loversboat = [loversboat1, loversboat2, loversboat3];
+const rjm = [rjm1, rjm2, rjm3];
+const sexmuseum = [sexmuseum1, sexmuseum2, sexmuseum3];
+
+const Carrossel = ({ images }) => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const nextSlide = () => {
+    setCurrentIndex((currentIndex + 1) % images.length);
+  };
+
+  useEffect(() => {
+    const intervalo = setInterval(() => {
+      nextSlide();
+    }, 4000); //milissegundos
+
+    return () => clearInterval(intervalo);
+  }, [currentIndex]);
+
+  return (
+    <div className="ease-in">
+      <img
+        src={images[currentIndex].src}
+        alt=""
+        className="h-[340px]  w-[430px] "
+      />
+    </div>
+  );
+};
 
 export default function Home() {
   return (
-    <body className="h-screen bg-preto w-390 h-844 ">
-      <main className="w-full  ">
-        <section className="min-h-screen flex flex-col md:flex-row ">
+    <body className="h-screen bg-preto  min-h-screen">
+      <main className="flex flex-col">
+        <section className="min-h-screen flex flex-col ">
           <div className="w-full md :w-1/2">
             <Image
               src={homeImage}
@@ -79,30 +131,151 @@ export default function Home() {
             </div>
           </div>
         </section>
-        
-        <footer className= "bg-preto font-lexend h-[392px] w-full text-branco">
-        <div className= "container mx-auto">
-          <div className="flex flex-col items-center py-24 gap-y-7">
-            
-            <div className="text-3xl">ENTRE EM CONTATO</div>
-            
-            <div className="gap-x-10 flex flex-row items-center">
+
+        <section className="bg-preto gap-[90px] ">
+          <div className="flex flex-col place-items-center gap-[70px] ">
+            <div className="text-branco font-lexend text-4xl mr-1 text-center font-regular  mt-[70px] ">
+              HEINEKEN EXPERIENCE
+            </div>
+
+            <div className="text-branco font-inter text-lg text-center   mx-16 w-[82%] ">
+              Consiste em uma atração localizada na primeira cervejaria
+              construída pela Heineken no centro de Amsterdã. Em 1988, a
+              cervejaria foi fechada devido à impossibilidade de atender a alta
+              demanda. Saiba mais sobre o legado da Heineken, o processo de
+              fabricação, inovações e patrocínio. O tour tem duração de uma hora
+              e meia e você poderá desfrutar de uma Heineken ou duas ao final do
+              passeio.
+            </div>
+            <div className="flex flex-col items-center ">
+              <Carrossel images={heineken} className="" />
+            </div>
+          </div>
+
+          <div className="flex flex-col place-items-center gap-[70px] ">
+            <div className="text-branco font-lexend text-4xl mr-1 text-center font-regular  mt-[70px] ">
+              ANNE FRANK HOUSE
+            </div>
+
+            <div className="text-branco font-inter text-lg text-center   mx-16 w-[82%] ">
+              A Casa da Anne Frank é um dos edifícios mais significativos da
+              história da cidade. Ali, viveram escondidos Anne Frank e sua
+              família durante a invasão nazista durante a Segunda Guerra
+              Mundial. Durante o tour são explicados detalhadamente os
+              acontecimentos ocorridos em cada um dos espaços da casa e alguns
+              parágrafos extraídos do diário de Anne Frank, através dos quais
+              você viajará a outra época.
+            </div>
+            <div className="flex flex-col items-center ">
+              <Carrossel images={annefrank} className="" />
+            </div>
+          </div>
+
+          <div className="flex flex-col place-items-center gap-[70px] ">
+            <div className="text-branco font-lexend text-4xl mr-1 text-center font-regular  mt-[70px] ">
+              VAN GOGH MUSEUM
+            </div>
+
+            <div className="text-branco font-inter text-lg text-center   mx-16 w-[82%] ">
+              O Museu Van Gogh é o museu mais visitado da Holanda. Nas modernas
+              instalações do Museu Van Gogh, você poderá encontrar mais de 200
+              pinturas, 500 desenhos e centenas de cartas do artista. As
+              pinturas estão organizadas cronologicamente, o que faz com que
+              seja possível observar facilmente a evolução do artista, com as
+              cenas campestres do início até os tormentosos trabalhos do final
+              de sua vida.
+            </div>
+            <div className="flex flex-col items-center ">
+              <Carrossel images={vangogh} className="" />
+            </div>
+          </div>
+
+          <div className="flex flex-col place-items-center gap-[70px] ">
+            <div className="text-branco font-lexend text-4xl mr-1 text-center font-regular  mt-[70px] ">
+              LOVERS BOAT TRIP
+            </div>
+
+            <div className="text-branco font-inter text-lg text-center   mx-16 w-[82%] ">
+              Amsterdã é uma cidade da água, e seus 100 canais e 1000 pontes são
+              famosos em todo o mundo. Admire a arquitetura moderna ao longo das
+              margens do Rio Amstel e os belos edifícios do século XVII com seus
+              muitos estilos de empena, elegantes mansões dos comerciantes e
+              casas flutuantes peculiares, no coração da cidade velha. Todos os
+              barcos têm tetos panorâmicos e janelas de correr, garantindo uma
+              vista maravilhosas e grandes fotos.
+            </div>
+            <div className="flex flex-col items-center ">
+              <Carrossel images={loversboat} className="" />
+            </div>
+          </div>
+
+          <div className="flex flex-col place-items-center gap-[70px] ">
+            <div className="text-branco font-lexend text-4xl mr-1 text-center font-regular  mt-[70px] ">
+              RIJKSMUSEUM
+            </div>
+
+            <div className="text-branco font-inter text-lg text-center   mx-16 w-[82%] ">
+              O Rijksmuseum é uma das atrações mais importantes de Amsterdam. É
+              o segundo museu mais visitado no país, perdendo apenas para o
+              Museu Van Gogh, e abriga a maior coleção de arte flamenca do
+              mundo. Rembrandt, Vermeer e Van Gogh são apenas alguns dos grandes
+              artistas presentes nesta galeria de arte imperdível.
+            </div>
+            <div className="flex flex-col items-center ">
+              <Carrossel images={rjm} className="" />
+            </div>
+          </div>
+
+          <div className="flex flex-col place-items-center gap-[70px] ">
+            <div className="text-branco font-lexend text-4xl mr-1 text-center font-regular  mt-[70px] ">
+              SEX MUSEUM
+            </div>
+
+            <div className="text-branco font-inter text-lg text-center   mx-16 w-[82%] ">
+              O primeiro museu do mundo focado neste tópico. Abriu em 1985 e
+              tornou-se logo popular entre os visitantes. Se decidir visitar o
+              museu, irá aprender mais sobre as práticas históricas e rituais
+              relacionados com as relações sexuais e ver objetos recolhidos de
+              todos cantos do planeta. O museu tem vários itens, sobretudo
+              fotografias, gravações áudio e estátuas, bem como vários
+              brinquedos sexuais usados em vários períodos históricos.
+            </div>
+            <div className="flex flex-col items-center ">
+              <Carrossel images={sexmuseum} className="" />
+            </div>
+          </div>
+        </section>
+
+        <footer className="bg-preto font-lexend h-[392px] w-full text-branco">
+          <div className="container mx-auto">
+            <div className="flex flex-col items-center py-24 gap-y-7">
+              <div className="text-3xl">ENTRE EM CONTATO</div>
+
+              <div className="gap-x-10 flex flex-row items-center">
                 <a target="_blank" href="https://wa.me/5512991346800">
-                  <img className="w-8 hover:-translate-y-1.5 duration-300" src={wpp.src} alt="icon whatsapp" />
+                  <img
+                    className="w-8 hover:-translate-y-1.5 duration-300"
+                    src={wpp.src}
+                    alt="icon whatsapp"
+                  />
                 </a>
                 <a target="_blank" href="mailto:bibirossi030512@gmail.com">
-                  <img className="w-8 py-1 hover:-translate-y-1.5 duration-300" src={email.src} alt="icon e-mail" />
+                  <img
+                    className="w-8 py-1 hover:-translate-y-1.5 duration-300"
+                    src={email.src}
+                    alt="icon e-mail"
+                  />
                 </a>
+              </div>
+              <div className="flex flex-col items-center py-11">
+                <a target="_blank" href="https://www.byronsolutions.com/">
+                  <img className="w-64" src={logo.src} alt="logo da byron" />
+                </a>
+              </div>
             </div>
-            <div className="flex flex-col items-center py-11">
-            <a target="_blank" href="https://www.byronsolutions.com/"><img className="w-64" src={logo.src} alt="logo da byron" /></a>
           </div>
-          </div>
-        </div>
-      </footer>
-
-
+        </footer>
       </main>
     </body>
-  )
+  );
 }
