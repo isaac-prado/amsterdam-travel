@@ -24,7 +24,6 @@ import rjm3 from "./img/rjm3.jpg";
 import sexmuseum1 from "./img/sexmuseum1.jpg";
 import sexmuseum2 from "./img/sexmuseum2.jpg";
 import sexmuseum3 from "./img/sexmuseum3.jpg";
-import { useSpring, animated } from "react-spring";
 
 const heineken = [heineken1, heineken2, heineken3];
 const annefrank = [annefrank1, annefrank2, annefrank3];
@@ -108,20 +107,18 @@ export default function Home() {
               className="absolute inset-0 opacity-85"
             />
           </div>
-          <navbar className="p-4 md:p-8 absolute top-0 left-0 px-2 md:px-6 py-2 md:py-4 font-inter w-full md:w-auto">
-            <div className="ml-9 mt-12 text-xl font-normal text-white">
+          <navbar className=" md:p-8 absolute  px-2 md:px-6 py-0 md:py-0 font-inter w-full md:w-auto ">
+            <div className="ml-7 mt-12 text-xl font-normal text-white">
               Amsterdam Travel
             </div>
           </navbar>
 
-          <div className="text-branco text-bold font-lexend mb-4 py-12 p-4 md:p-8 md:px-10 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center w-full md:w-auto">
+          <div className="text-branco text-bold font-lexend mb-4 py-12 p-4 md:p-8 md:px-10 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center w-full md:w-auto mt-9">
             <div className="flex flex-col place-items-center text-4xl font-medium mt-80 mb-0 text-white py-4 px-6 w-full md:w-auto justify-center ">
-              A AVENTURA
-              <br />
+              <div>A AVENTURA</div>
               COMEÇA AQUI
-              <br />
             </div>
-            <div className="flex flex-col place-items-center ">
+            <div className="flex flex-col place-items-center  hover:translate-y-1.5 duration-300">
               <button
                 onClick={() => {
                   const element = document.getElementById("sobre");
@@ -151,13 +148,13 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="sobre" className="bg-vermelho w-431 h-96 ">
-          <div className="flex flex-col place-items-center">
-            <div className="text-branco font-inter text-2xl font-regular mt-24">
+        <section id="sobre" className="bg-vermelho w-431  ">
+          <div className="flex flex-col place-items-center my-4 ">
+            <div className="text-branco font-inter text-4xl font-regular mt-9">
               SOBRE
             </div>
 
-            <div className="text-branco font-inter text-base text-center mt-12 ">
+            <div className="text-branco font-inter text-lg text-center mt-9 mb-9 mx-7">
               Bem-vindo à Amsterdam Travel, sua porta de entrada para uma
               experiência única em viagens pela deslumbrante cidade de
               Amsterdam. Fundada por duas entusiastas brasileiras com a paixão
@@ -168,13 +165,13 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="bg-preto gap-[90px] ">
+        <section className="bg-preto  ">
           <div className="flex flex-col place-items-center gap-[70px] ">
-            <div className="text-branco font-lexend text-4xl mr-1 text-center font-regular  mt-[70px] ">
+            <div className="text-branco font-lexend text-4xl  text-center font-regular mt-[70px] ">
               HEINEKEN EXPERIENCE
             </div>
 
-            <div className="text-branco font-inter text-lg text-center   mx-16 w-[82%] ">
+            <div className="text-branco font-inter text-lg text-center w-[82%] ">
               Consiste em uma atração localizada na primeira cervejaria
               construída pela Heineken no centro de Amsterdã. Em 1988, a
               cervejaria foi fechada devido à impossibilidade de atender a alta
@@ -189,11 +186,11 @@ export default function Home() {
           </div>
 
           <div className="flex flex-col place-items-center gap-[70px] ">
-            <div className="text-branco font-lexend text-4xl mr-1 text-center font-regular  mt-[70px] ">
+            <div className="text-branco font-lexend text-4xl mr-1 text-center sm: break-words font-regular wrap mt-[70px] ">
               ANNE FRANK HOUSE
             </div>
 
-            <div className="text-branco font-inter text-lg text-center   mx-16 w-[82%] ">
+            <div className="text-branco font-inter text-lg text-center w-[82%] ">
               A Casa da Anne Frank é um dos edifícios mais significativos da
               história da cidade. Ali, viveram escondidos Anne Frank e sua
               família durante a invasão nazista durante a Segunda Guerra
@@ -212,7 +209,7 @@ export default function Home() {
               VAN GOGH MUSEUM
             </div>
 
-            <div className="text-branco font-inter text-lg text-center   mx-16 w-[82%] ">
+            <div className="text-branco font-inter text-lg text-center w-[82%] ">
               O Museu Van Gogh é o museu mais visitado da Holanda. Nas modernas
               instalações do Museu Van Gogh, você poderá encontrar mais de 200
               pinturas, 500 desenhos e centenas de cartas do artista. As
@@ -227,11 +224,11 @@ export default function Home() {
           </div>
 
           <div className="flex flex-col place-items-center gap-[70px] ">
-            <div className="text-branco font-lexend text-4xl mr-1 text-center font-regular  mt-[70px] ">
+            <div className="text-branco font-lexend text-4xl w-[95%] text-center font-regular sm: break-words mt-[70px] ">
               LOVERS BOAT TRIP
             </div>
 
-            <div className="text-branco font-inter text-lg text-center   mx-16 w-[82%] ">
+            <div className="text-branco font-inter text-lg text-center w-[82%] ">
               Amsterdã é uma cidade da água, e seus 100 canais e 1000 pontes são
               famosos em todo o mundo. Admire a arquitetura moderna ao longo das
               margens do Rio Amstel e os belos edifícios do século XVII com seus
@@ -250,7 +247,7 @@ export default function Home() {
               RIJKSMUSEUM
             </div>
 
-            <div className="text-branco font-inter text-lg text-center   mx-16 w-[82%] ">
+            <div className="text-branco font-inter text-lg text-center  w-[82%] ">
               O Rijksmuseum é uma das atrações mais importantes de Amsterdam. É
               o segundo museu mais visitado no país, perdendo apenas para o
               Museu Van Gogh, e abriga a maior coleção de arte flamenca do
@@ -267,7 +264,7 @@ export default function Home() {
               SEX MUSEUM
             </div>
 
-            <div className="text-branco font-inter text-lg text-center   mx-16 w-[82%] ">
+            <div className="text-branco font-inter text-lg text-center w-[82%] ">
               O primeiro museu do mundo focado neste tópico. Abriu em 1985 e
               tornou-se logo popular entre os visitantes. Se decidir visitar o
               museu, irá aprender mais sobre as práticas históricas e rituais
