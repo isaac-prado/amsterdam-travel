@@ -1,6 +1,5 @@
 "use client";
 import chuva from "./img/chuva.png";
-import { useState, useEffect } from "react";
 import logo from "./img/byronbranco.png";
 import wpp from "./img/whats.png";
 import email from "./img/email.png";
@@ -65,21 +64,37 @@ const tempo = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await 
-      fetch(
+      const response = await fetch(
         "https://api.openweathermap.org/data/2.5/weather?q=Amsterdam&appid=38134f9f8954d078682e7d6e5fa50a7b"
       );
       const data = await response.json();
       setWeatherData({
-        temp: data.main.temp - 273.15, 
+        temp: data.main.temp - 273.15,
         humidity: data.main.humidity,
       });
     };
 
     fetchData();
   }, []);
+};
 
 export default function Home() {
+  const [weatherData, setWeatherData] = useState(0);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch(
+        "https://api.openweathermap.org/data/2.5/weather?q=Amsterdam&appid=38134f9f8954d078682e7d6e5fa50a7b"
+      );
+      const data = await response.json();
+      setWeatherData({
+        temp: data.main.temp - 273.15,
+        humidity: data.main.humidity,
+      });
+    };
+
+    fetchData();
+  }, []);
   return (
     <body className="h-screen bg-preto  min-h-screen">
       <main className="flex flex-col">
@@ -267,34 +282,38 @@ export default function Home() {
           </div>
         </section>
 
-        <section class="tempo" className="bg-vermelho font-lexend w-full text-branco">
-          { weatherData &&(
-        <div className="bg-vermelho h-[550px]">
-          <div className="h-[550px] flex flex-col items-center py-16 gap-y-6">
-           
+        <section
+          class="tempo"
+          className="bg-vermelho font-lexend w-full text-branco"
+        >
+          <div className="bg-vermelho h-[550px] text-branco">
+            <div className="h-[550px] flex flex-col items-center py-16 gap-y-6">
               <div className="space-y-4 flex flex-col items-center">
                 <div className="text-[30px]">Agora</div>
-                <div className="text-[80px]">{weatherData.temp.toFixed(1)}°C</div>
+                <div className="text-[80px]">
+                  {weatherData && weatherData.temp.toFixed(1)}°C
+                </div>
                 <div className="text-[25px]">Amsterdam</div>
               </div>
-            
-            <div className="w-64 rounded h-1 bg-preto"></div>
-  
-            <div className="space-y-3 flex flex-col items-center">
-              <div className="flex flex-row gap-x-4 items-center">
-                <div className="w-10"><img src={chuva.src} alt="icone de chuva" /></div>
-                <div className="text-[35px]">Umidade</div>
+
+              <div className="w-64 rounded h-1 bg-preto"></div>
+
+              <div className="space-y-3 flex flex-col items-center">
+                <div className="flex flex-row gap-x-4 items-center">
+                  <div className="w-10">
+                    <img src={chuva.src} alt="icone de chuva" />
+                  </div>
+                  <div className="text-[35px]">Umidade</div>
+                </div>
+                <div className="text-[40px]">{weatherData.humidity}%</div>
               </div>
-              <div className="text-[40px]">{weatherData.humidity}%</div>
             </div>
           </div>
-        </div>
-    )}  
-      </section>
+        </section>
 
         <footer className="bg-preto font-lexend h-[392px] w-full text-branco">
-          <div className="container mx-auto">
-            <div className="flex flex-col items-center py-24 gap-y-7">
+          <div className="container mx-auto h-full">
+            <div className="flex flex-col items-center py-24 gap-y-7 h-full">
               <div className="text-3xl">ENTRE EM CONTATO</div>
 
               <div className="gap-x-10 flex flex-row items-center">
