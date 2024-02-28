@@ -58,25 +58,6 @@ const Carrossel = ({ images }) => {
   );
 };
 
-const tempo = () => {
-  const [weatherData, setWeatherData] = useState(null);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const response = await fetch(
-        "https://api.openweathermap.org/data/2.5/weather?q=Amsterdam&appid=38134f9f8954d078682e7d6e5fa50a7b"
-      );
-      const data = await response.json();
-      setWeatherData({
-        temp: data.main.temp - 273.15,
-        humidity: data.main.humidity,
-      });
-    };
-
-    fetchData();
-  }, []);
-};
-
 export default function Home() {
   const [weatherData, setWeatherData] = useState(0);
 
