@@ -26,6 +26,7 @@ import sexmuseum2 from "./img/sexmuseum2.jpg";
 import sexmuseum3 from "./img/sexmuseum3.jpg";
 import { useSpring, animated } from "react-spring";
 
+const omg = 10
 const heineken = [heineken1, heineken2, heineken3];
 const annefrank = [annefrank1, annefrank2, annefrank3];
 const vangogh = [vangogh1, vangogh2, vangogh3];
