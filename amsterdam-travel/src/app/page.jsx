@@ -1,9 +1,3 @@
-"use client";
-import chuva from "./img/chuva.png";
-import logo from "./img/byronbranco.png";
-import wpp from "./img/whats.png";
-import email from "./img/email.png";
-import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import homeImage from "./img/home.jpg";
 import heineken1 from "./img/heineken1.jpg";
@@ -78,22 +72,6 @@ const tempo = () => {
 };
 
 export default function Home() {
-  const [weatherData, setWeatherData] = useState(0);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const response = await fetch(
-        "https://api.openweathermap.org/data/2.5/weather?q=Amsterdam&appid=38134f9f8954d078682e7d6e5fa50a7b"
-      );
-      const data = await response.json();
-      setWeatherData({
-        temp: data.main.temp - 273.15,
-        humidity: data.main.humidity,
-      });
-    };
-
-    fetchData();
-  }, []);
   return (
     <body className="h-screen bg-preto  min-h-screen">
       <main className="flex flex-col">
