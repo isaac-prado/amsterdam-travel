@@ -1,5 +1,11 @@
+"use client";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import homeImage from "./img/home.jpg";
+import chuva from "./img/chuva.png";
+import wpp from "./img/whats.png";
+import email from "./img/email.png";
+import logo from "./img/byronbranco.png";
 import heineken1 from "./img/heineken1.jpg";
 import heineken2 from "./img/heineken2.png";
 import heineken3 from "./img/heineken3.jpg";
@@ -42,19 +48,36 @@ const Carrossel = ({ images }) => {
   }, [currentIndex]);
 
   return (
-    <div className="ease-in">
+    <div className="ease-in lg:mt-12">
       <img
         src={images[currentIndex].src}
         alt=""
-        className="h-[340px]  w-[430px] "
+        className="h-[340px]  w-[430px]  lg:rounded-2xl lg:w-[900px] lg:h-[450px] "
       />
     </div>
   );
 };
 
 export default function Home() {
+  const [weatherData, setWeatherData] = useState(0);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch(
+        "https://api.openweathermap.org/data/2.5/weather?q=Amsterdam&appid=38134f9f8954d078682e7d6e5fa50a7b"
+      );
+      const data = await response.json();
+      setWeatherData({
+        temp: data.main.temp - 273.15,
+        humidity: data.main.humidity,
+      });
+    };
+
+    fetchData();
+  }, []);
+
   return (
-    <body className="h-screen bg-preto  min-h-screen">
+    <body className="h-screen bg-preto  min-h-screen ">
       <main className="flex flex-col">
         <section className="min-h-screen flex flex-col ">
           <div className="w-full md :w-1/2">
@@ -63,17 +86,53 @@ export default function Home() {
               layout="fill"
               objectFit="cover"
               alt="Imagem de fundo"
-              className="absolute inset-0 opacity-85"
+              className="absolute inset-0 opacity-90"
             />
           </div>
-          <navbar className=" md:p-8 absolute  px-2 md:px-6 py-0 md:py-0 font-inter w-full md:w-auto ">
-            <div className="ml-7 mt-12 text-xl font-normal text-white">
+          <navbar className="  absolute  px-2  py-0  font-inter w-full  flex justify-between scroll-smooth">
+            <div className="ml-7 mt-12 text-2xl font-normal text-white">
               Amsterdam Travel
+            </div>
+            <div className="scroll-smooth focus:scroll-auto">
+              <ul className="hidden lg:flex lg:row-reverse lg:mt-14  lg:px-12  scroll-smooth">
+                <li className="mx-4 my-6 lg:my-0 lg:space-x-4 lg:hover:-translate-y-1.5 duration-300 scroll-smooth">
+                  <a
+                    href="#sobre"
+                    className=" text-branco px-3 py-2 rounded-md text-2xl scroll-smooth "
+                  >
+                    Sobre
+                  </a>
+                </li>
+                <li className="mx-4 my-6 lg:my-0 lg:space-x-4 lg:hover:-translate-y-1.5 duration-300">
+                  <a
+                    href="#passeios"
+                    className=" text-branco px-3 py-2 rounded-md text-2xl"
+                  >
+                    Passeios
+                  </a>
+                </li>
+                <li className="mx-4 my-6 lg:my-0 lg:space-x-4 lg:hover:-translate-y-1.5 duration-300">
+                  <a
+                    href="#tempo"
+                    className=" text-branco px-3 py-2 rounded-md text-2xl"
+                  >
+                    Tempo
+                  </a>
+                </li>
+                <li className="mx-4 my-6 lg:my-0 lg:space-x-4 lg:hover:-translate-y-1.5 duration-300">
+                  <a
+                    href="#contato"
+                    className=" text-branco px-3 py-2 rounded-md text-2xl"
+                  >
+                    Contato
+                  </a>
+                </li>
+              </ul>
             </div>
           </navbar>
 
-          <div className="text-branco text-bold font-lexend mb-4 py-12 p-4 md:p-8 md:px-10 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center w-full md:w-auto mt-9">
-            <div className="flex flex-col place-items-center text-4xl font-medium mt-80 mb-0 text-white py-4 px-6 w-full md:w-auto justify-center ">
+          <div className="text-branco text-bold font-lexend mb-4 p-4 lg:p-8 lg:px-10 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center w-full lg:w-auto mt-9 lg:mt-28">
+            <div className="flex flex-col place-items-center text-4xl lg:text-5xl font-medium mt-80 mb-0 text-white py-4 px-6 w-full lg:w-auto justify-center ">
               <div>A AVENTURA</div>
               COMEÇA AQUI
             </div>
@@ -85,7 +144,7 @@ export default function Home() {
                     element.scrollIntoView({ behavior: "smooth" });
                   }
                 }}
-                className="w-full md:w-auto flex flex-col place-items-center"
+                className="w-full  flex flex-col place-items-center lg:h-40"
               >
                 <svg
                   width="77"
@@ -113,7 +172,7 @@ export default function Home() {
               SOBRE
             </div>
 
-            <div className="text-branco font-inter text-lg text-center mt-9 mb-9 mx-7">
+            <div className="text-branco font-inter text-lg text-center mt-9 mb-9 mx-7 lg:w-[65%] lg:text-2xl">
               Bem-vindo à Amsterdam Travel, sua porta de entrada para uma
               experiência única em viagens pela deslumbrante cidade de
               Amsterdam. Fundada por duas entusiastas brasileiras com a paixão
@@ -124,150 +183,162 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="bg-preto  ">
-          <div className="flex flex-col place-items-center gap-[70px] ">
-            <div className="text-branco font-lexend text-4xl  text-center font-regular mt-[70px] ">
-              HEINEKEN EXPERIENCE
+        <section id="passeios" className="bg-preto  ">
+          <div className="flex flex-col place-items-center gap-[70px] lg:grid lg:grid-cols-2  lg:h-screen lg:justify-center">
+            <div className="flex flex-col place-items-center gap-[70px] lg:h-[460px]  lg:items-center lg:py-10 lg:mt-20 lg:w-[112%] lg:ml-24">
+              <div className="text-branco font-lexend text-4xl  text-center font-regular mt-[70px] lg:flex-col  lg:text-center  lg:justify-center lg:ml-12 lg:mt-16">
+                HEINEKEN EXPERIENCE
+              </div>
+              <div className="text-branco font-inter text-lg text-center w-[82%] lg:text-2xl lg:w-[90%] lg:ml-10 lg:mt-4 lg:space-y-4 lg:mr-0">
+                Consiste em uma atração localizada na primeira cervejaria
+                construída pela Heineken no centro de Amsterdã. Em 1988, a
+                cervejaria foi fechada devido à impossibilidade de atender a
+                alta demanda. Saiba mais sobre o legado da Heineken, o processo
+                de fabricação, inovações e patrocínio. O tour tem duração de uma
+                hora e meia e você poderá desfrutar de uma Heineken ou duas ao
+                final do passeio.
+              </div>
             </div>
 
-            <div className="text-branco font-inter text-lg text-center w-[82%] ">
-              Consiste em uma atração localizada na primeira cervejaria
-              construída pela Heineken no centro de Amsterdã. Em 1988, a
-              cervejaria foi fechada devido à impossibilidade de atender a alta
-              demanda. Saiba mais sobre o legado da Heineken, o processo de
-              fabricação, inovações e patrocínio. O tour tem duração de uma hora
-              e meia e você poderá desfrutar de uma Heineken ou duas ao final do
-              passeio.
-            </div>
-            <div className="flex flex-col items-center ">
+            <div className="flex flex-col items-center lg:w-[80%]  lg:mr-24 lg:mt-24 lg:ml-20 ">
               <Carrossel images={heineken} className="" />
             </div>
           </div>
 
-          <div className="flex flex-col place-items-center gap-[70px] ">
-            <div className="text-branco font-lexend text-4xl mr-1 text-center sm: break-words font-regular wrap mt-[70px] ">
-              ANNE FRANK HOUSE
+          <div className="flex flex-col place-items-center gap-[70px]  lg:flex-row-reverse  lg:h-screen lg:justify-center">
+            <div className="flex flex-col place-items-center gap-[70px] lg:h-[460px]   lg:items-center lg:py-10 lg:w-[112%] lg:mt-28 lg:mr-10 lg:ml-0">
+              <div className="text-branco font-lexend text-4xl mr-1 text-center  font-regular mt-[70px] lg:flex-col lg:text-center  lg:justify-center lg:ml-0 lg:mt-16">
+                ANNE FRANK HOUSE
+              </div>
+              <div className="text-branco font-inter text-lg text-center w-[82%] lg:text-2xl lg:w-[90%] lg:ml-10 lg:mt-4 lg:mr-14 ">
+                A Casa da Anne Frank é um dos edifícios mais significativos da
+                história da cidade. Ali, viveram escondidos Anne Frank e sua
+                família durante a invasão nazista durante a Segunda Guerra
+                Mundial. Durante o tour são explicados detalhadamente os
+                acontecimentos ocorridos em cada um dos espaços da casa e alguns
+                parágrafos extraídos do diário de Anne Frank, através dos quais
+                você viajará a outra época.
+              </div>
             </div>
-
-            <div className="text-branco font-inter text-lg text-center w-[82%] ">
-              A Casa da Anne Frank é um dos edifícios mais significativos da
-              história da cidade. Ali, viveram escondidos Anne Frank e sua
-              família durante a invasão nazista durante a Segunda Guerra
-              Mundial. Durante o tour são explicados detalhadamente os
-              acontecimentos ocorridos em cada um dos espaços da casa e alguns
-              parágrafos extraídos do diário de Anne Frank, através dos quais
-              você viajará a outra época.
-            </div>
-            <div className="flex flex-col items-center ">
+            <div className="flex flex-col items-center   lg:w-[80%]  lg:mr-0 lg:mt-24 lg:ml-20 lg:flex lg:flex-row-reverse">
               <Carrossel images={annefrank} className="" />
             </div>
           </div>
 
-          <div className="flex flex-col place-items-center gap-[70px] ">
-            <div className="text-branco font-lexend text-4xl mr-1 text-center font-regular  mt-[70px] ">
-              VAN GOGH MUSEUM
+          <div className="flex flex-col place-items-center gap-[70px] lg:grid lg:grid-cols-2 lg:grid-rows-{10} lg:h-screen lg:justify-center ">
+            <div className="flex flex-col place-items-center gap-[70px] lg:h-[460px]  lg:items-center lg:py-10 lg:mt-20 lg:w-[112%] lg:ml-24">
+              <div className="text-branco font-lexend text-4xl mr-1 text-center font-regular  mt-[70px] lg:flex-col  lg:text-center  lg:justify-center lg:ml-12 lg:mt-16">
+                VAN GOGH MUSEUM
+              </div>
+              <div className="text-branco font-inter text-lg text-center w-[82%] lg:text-2xl lg:w-[90%] lg:ml-10 lg:mt-4 lg:space-y-4 lg:mr-0">
+                O Museu Van Gogh é o museu mais visitado da Holanda. Nas
+                modernas instalações do Museu Van Gogh, você poderá encontrar
+                mais de 200 pinturas, 500 desenhos e centenas de cartas do
+                artista. As pinturas estão organizadas cronologicamente, o que
+                faz com que seja possível observar facilmente a evolução do
+                artista, com as cenas campestres do início até os tormentosos
+                trabalhos do final de sua vida.
+              </div>
             </div>
-
-            <div className="text-branco font-inter text-lg text-center w-[82%] ">
-              O Museu Van Gogh é o museu mais visitado da Holanda. Nas modernas
-              instalações do Museu Van Gogh, você poderá encontrar mais de 200
-              pinturas, 500 desenhos e centenas de cartas do artista. As
-              pinturas estão organizadas cronologicamente, o que faz com que
-              seja possível observar facilmente a evolução do artista, com as
-              cenas campestres do início até os tormentosos trabalhos do final
-              de sua vida.
-            </div>
-            <div className="flex flex-col items-center ">
+            <div className="flex flex-col items-center  lg:w-[80%] lg:mr-24 lg:mt-24 lg:ml-20">
               <Carrossel images={vangogh} className="" />
             </div>
           </div>
 
-          <div className="flex flex-col place-items-center gap-[70px] ">
-            <div className="text-branco font-lexend text-4xl w-[95%] text-center font-regular sm: break-words mt-[70px] ">
-              LOVERS BOAT TRIP
+          <div className="flex flex-col place-items-center gap-[70px]  lg:flex-row-reverse  lg:h-screen lg:justify-center">
+            <div className="flex flex-col place-items-center gap-[70px] lg:h-[460px]   lg:items-center lg:py-10 lg:w-[112%] lg:mt-28 lg:mr-10 lg:ml-0 ">
+              <div className="text-branco font-lexend text-4xl mr-1 text-center  font-regular mt-[70px] lg:flex-col  lg:text-center  lg:justify-center lg:ml-0 lg:mt-16 ">
+                LOVERS BOAT TRIP
+              </div>
+              <div className="text-branco font-inter text-lg text-center w-[82%] lg:text-2xl lg:w-[90%] lg:ml-10 lg:mt-4 lg:mr-14 ">
+                Amsterdã é uma cidade da água, e seus 100 canais e 1000 pontes
+                são famosos em todo o mundo. Admire a arquitetura moderna ao
+                longo das margens do Rio Amstel e os belos edifícios do século
+                XVII com seus muitos estilos de empena, elegantes mansões dos
+                comerciantes e casas flutuantes peculiares, no coração da cidade
+                velha. Todos os barcos têm tetos panorâmicos e janelas de
+                correr, garantindo uma vista maravilhosas e grandes fotos.
+              </div>
             </div>
-
-            <div className="text-branco font-inter text-lg text-center w-[82%] ">
-              Amsterdã é uma cidade da água, e seus 100 canais e 1000 pontes são
-              famosos em todo o mundo. Admire a arquitetura moderna ao longo das
-              margens do Rio Amstel e os belos edifícios do século XVII com seus
-              muitos estilos de empena, elegantes mansões dos comerciantes e
-              casas flutuantes peculiares, no coração da cidade velha. Todos os
-              barcos têm tetos panorâmicos e janelas de correr, garantindo uma
-              vista maravilhosas e grandes fotos.
-            </div>
-            <div className="flex flex-col items-center ">
+            <div className="flex flex-col items-center lg:w-[80%] lg:mr-0 lg:mt-24 lg:ml-20 lg:flex lg:flex-row-reverse">
               <Carrossel images={loversboat} className="" />
             </div>
           </div>
 
-          <div className="flex flex-col place-items-center gap-[70px] ">
-            <div className="text-branco font-lexend text-4xl mr-1 text-center font-regular  mt-[70px] ">
-              RIJKSMUSEUM
+          <div className="flex flex-col place-items-center gap-[70px] lg:grid lg:grid-cols-2 lg:grid-rows-{10} lg:h-screen lg:justify-center ">
+            <div className="flex flex-col place-items-center gap-[70px] lg:h-[460px]  lg:items-center lg:py-10 lg:mt-20 lg:w-[112%] lg:ml-24">
+              <div className="text-branco font-lexend text-4xl  text-center font-regular mt-[70px] lg:flex-col  lg:text-center  lg:justify-center lg:ml-12 lg:mt-16 ">
+                RIJKSMUSEUM
+              </div>
+              <div className="text-branco font-inter text-lg text-center w-[82%] lg:text-2xl lg:w-[90%] lg:ml-10 lg:mt-4 lg:space-y-4 lg:mr-0">
+                O Rijksmuseum é uma das atrações mais importantes de Amsterdam.
+                É o segundo museu mais visitado no país, perdendo apenas para o
+                Museu Van Gogh, e abriga a maior coleção de arte flamenca do
+                mundo. Rembrandt, Vermeer e Van Gogh são apenas alguns dos
+                grandes artistas presentes nesta galeria de arte imperdível.
+              </div>
             </div>
-
-            <div className="text-branco font-inter text-lg text-center  w-[82%] ">
-              O Rijksmuseum é uma das atrações mais importantes de Amsterdam. É
-              o segundo museu mais visitado no país, perdendo apenas para o
-              Museu Van Gogh, e abriga a maior coleção de arte flamenca do
-              mundo. Rembrandt, Vermeer e Van Gogh são apenas alguns dos grandes
-              artistas presentes nesta galeria de arte imperdível.
-            </div>
-            <div className="flex flex-col items-center ">
+            <div className="flex flex-col items-center lg:w-[80%] lg:mr-24 lg:mt-40 lg:ml-20 ">
               <Carrossel images={rjm} className="" />
             </div>
           </div>
 
-          <div className="flex flex-col place-items-center gap-[70px] ">
-            <div className="text-branco font-lexend text-4xl mr-1 text-center font-regular  mt-[70px] ">
-              SEX MUSEUM
+          <div className="flex flex-col place-items-center gap-[70px]  lg:flex-row-reverse  lg:h-screen lg:justify-center lg:mb-20">
+            <div className="flex flex-col place-items-center gap-[70px] lg:h-[460px]   lg:items-center lg:py-10 lg:w-[112%] lg:mt-28 lg:mr-10 lg:ml-0">
+              <div className="text-branco font-lexend text-4xl mr-1 text-center  font-regular mt-[70px] lg:flex-col lg:text-center  lg:justify-center lg:ml-0 lg:mt-16">
+                SEX MUSEUM
+              </div>
+              <div className="text-branco font-inter text-lg text-center w-[82%] lg:text-2xl lg:w-[90%] lg:ml-10 lg:mt-4 lg:mr-14 ">
+                O primeiro museu do mundo focado neste tópico. Abriu em 1985 e
+                tornou-se logo popular entre os visitantes. Se decidir visitar o
+                museu, irá aprender mais sobre as práticas históricas e rituais
+                relacionados com as relações sexuais e ver objetos recolhidos de
+                todos cantos do planeta. O museu tem vários itens, sobretudo
+                fotografias, gravações áudio e estátuas, bem como vários
+                brinquedos sexuais usados em vários períodos históricos.
+              </div>
             </div>
-
-            <div className="text-branco font-inter text-lg text-center w-[82%] ">
-              O primeiro museu do mundo focado neste tópico. Abriu em 1985 e
-              tornou-se logo popular entre os visitantes. Se decidir visitar o
-              museu, irá aprender mais sobre as práticas históricas e rituais
-              relacionados com as relações sexuais e ver objetos recolhidos de
-              todos cantos do planeta. O museu tem vários itens, sobretudo
-              fotografias, gravações áudio e estátuas, bem como vários
-              brinquedos sexuais usados em vários períodos históricos.
-            </div>
-            <div className="flex flex-col items-center ">
+            <div className="flex flex-col items-center lg:w-[80%] lg:mt-24 lg:mr-0 lg:ml-20 lg:flex lg:flex-row-reverse">
               <Carrossel images={sexmuseum} className="" />
             </div>
           </div>
         </section>
 
         <section
-          class="tempo"
+          id="tempo"
           className="bg-vermelho font-lexend w-full text-branco"
         >
           <div className="bg-vermelho h-[550px] text-branco">
-            <div className="h-[550px] flex flex-col items-center py-16 gap-y-6">
-              <div className="space-y-4 flex flex-col items-center">
-                <div className="text-[30px]">Agora</div>
-                <div className="text-[80px]">
+            <div className="h-[550px] flex flex-col lg:flex-row lg:justify-center lg:flexitems-center items-center py-16 gap-y-6">
+              <div className="space-y-4 flex flex-col items-center lg:justify-center lg:flex">
+                <div className="text-[30px] lg:text-[45px]">Agora</div>
+                <div className="text-[80px] lg:text-[90px]">
                   {weatherData && weatherData.temp.toFixed(1)}°C
                 </div>
-                <div className="text-[25px]">Amsterdam</div>
+                <div className="text-[25px] lg:text-[30px] ">Amsterdam</div>
               </div>
 
-              <div className="w-64 rounded h-1 bg-preto"></div>
+              <div className="w-64 lg:rotate-90 rounded h-1 bg-preto"></div>
 
               <div className="space-y-3 flex flex-col items-center">
                 <div className="flex flex-row gap-x-4 items-center">
-                  <div className="w-10">
+                  <div className="w-10 lg:w-12">
                     <img src={chuva.src} alt="icone de chuva" />
                   </div>
-                  <div className="text-[35px]">Umidade</div>
+                  <div className="text-[35px] lg:text-[45px] ">Umidade</div>
                 </div>
-                <div className="text-[40px]">{weatherData.humidity}%</div>
+                <div className="text-[40px] lg:text-[75px]">
+                  {weatherData.humidity}%
+                </div>
               </div>
             </div>
           </div>
         </section>
 
-        <footer className="bg-preto font-lexend h-[392px] w-full text-branco">
+        <footer
+          id="contato"
+          className="bg-preto font-lexend h-[392px] w-full text-branco"
+        >
           <div className="container mx-auto h-full">
             <div className="flex flex-col items-center py-24 gap-y-7 h-full">
               <div className="text-3xl">ENTRE EM CONTATO</div>
