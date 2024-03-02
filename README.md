@@ -1,6 +1,6 @@
 # Amsterdam Travel
 
-<img src="/amsterdam-travel/amsterdam-travel/src/app/img/readme/home.jpeg" alt="Api de temperatura e umidade">
+<img src="./amsterdam-travel/src/app/img/readme/home.jpeg" alt="Api de temperatura e umidade">
 </center>
 
 </p>
@@ -11,18 +11,18 @@ Nosso site conta com seis passeios distintos que serão capazes de trazer lembra
 
 ## Design
 
-[![Tailwind Badge](https://img.shields.io/badge/Figma-F24E1E.svg?style=for-the-badge&logo=Figma&logoColor=white)](https://www.figma.com/file/3auWc0qx4Tz9XvG2sfDXsC/Projeto-final?type=design&node-id=0%3A1&mode=design&t=5JwqRoXV2j07DR3c-1)
+[![Tailwind Badge](https://img.shields.io/badge/Figma-F24E1E.svg?style=for-the-badge&logo=Figma&logovColor=white)](https://www.figma.com/file/3auWc0qx4Tz9XvG2sfDXsC/Projeto-final?type=design&node-id=0%3A1&mode=design&t=5JwqRoXV2j07DR3c-1)
 
 #### Desktop
 
-<img src="/amsterdam-travel//amsterdam-travel/src/app/img/readme/desktop.gif" alt="">
+<img src="./amsterdam-travel/src/app/img/readme/desktop.gif" alt="">
 </center>
 
 ---
 
 #### Mobile
 
-<img src="/amsterdam-travel/amsterdam-travel/src/app/img/readme/mobile.gif" alt="">
+<img src="./amsterdam-travel/src/app/img/readme/mobile.gif" alt="">
 </center>
 
 ---
@@ -53,13 +53,13 @@ $ npm run dev
 
 Inserimos uma API que mostra a temperatura e umidade em tempo real, para que os futuros visitantes escolham a melhor época para sua viagem
 
-<img src="/amsterdam-travel/amsterdam-travel/src/app/img/readme/api.jpeg" alt="">
+<img src="./amsterdam-travel/src/app/img/readme/api.jpeg" alt="">
 
 <p></p>
 Além disso, fizemos um carrossel com imagens de cada atração para que seja possível visualizar melhor como serão os passeios
 <p></p>
 
-<img src="/amsterdam-travel/amsterdam-travel/src/app/img/readme/carrossel.gif" alt="">
+<img src="./amsterdam-travel/src/app/img/readme/carrossel.gif" alt="">
 
 ---
 
@@ -72,6 +72,6 @@ Além disso, fizemos um carrossel com imagens de cada atração para que seja po
 ## Autoras
 
 <table style="">
-    <td align="center"><a href="https://github.com/beatrizgnascimento"><img style="border-radius: 50%; width:175px;" src="/amsterdam-travel/amsterdam-travel/src/app/img/readme/bia.jpeg" width="100px;" alt=""/><br /><sub><b>Beatriz Nascimento</b></sub></a><br /></td>
-    <td align="center"><a href="https://github.com/bianca-rossi"><img style="border-radius: 50%; width:175px;" src="/amsterdam-travel/amsterdam-travel/src/app/img/readme/bianca.jpeg" width="100px;" alt=""/><br /><sub><b>Bianca Rossi</b></sub></a><br /></td>
+    <td align="center"><a href="https://github.com/beatrizgnascimento"><img style="border-radius: 50%; width:175px;" src="./amsterdam-travel/src/app/img/readme/bia.jpeg" width="100px;" alt=""/><br /><sub><b>Beatriz Nascimento</b></sub></a><br /></td>
+    <td align="center"><a href="https://github.com/bianca-rossi"><img style="border-radius: 50%; width:175px;" src="./amsterdam-travel/src/app/img/readme/bianca.jpeg" width="100px;" alt=""/><br /><sub><b>Bianca Rossi</b></sub></a><br /></td>
 </table>
